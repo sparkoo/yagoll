@@ -38,6 +38,7 @@ type config struct {
 func SetLevel(level int) {
 	conf.level = level
 }
+
 func writeMessage(message message) {
 	if message.level < conf.level {
 		return
@@ -91,5 +92,67 @@ func Printf(msg string, args ... interface{}) {
 }
 
 func Printfln(msg string, args ... interface{}) {
-	writeMessage(message{message: msg, args: args, format: true, newLine: true, level: TRACE})
+	message := createMessagef(msg, args)
+	message.level = TRACE
+	writeMessage(message)
+}
+
+func Trace(msg ... interface{}) {
+	message := createMessage(msg...)
+	message.level = TRACE
+	writeMessage(message)
+}
+
+func Tracef(msg string, args ... interface{}) {
+	message := createMessagef(msg, args)
+	message.level = TRACE
+	writeMessage(message)
+}
+
+func Debug(msg ... interface{}) {
+	message := createMessage(msg...)
+	message.level = INFO
+	writeMessage(message)
+}
+
+func Debugf(msg string, args ... interface{}) {
+	message := createMessagef(msg, args)
+	message.level = INFO
+	writeMessage(message)
+}
+
+func Info(msg ... interface{}) {
+	message := createMessage(msg...)
+	message.level = INFO
+	writeMessage(message)
+}
+
+func Infof(msg string, args ... interface{}) {
+	message := createMessagef(msg, args)
+	message.level = INFO
+	writeMessage(message)
+}
+
+func Warn(msg ... interface{}) {
+	message := createMessage(msg...)
+	message.level = WARN
+	writeMessage(message)
+}
+
+func Warnf(msg string, args ... interface{}) {
+	message := createMessagef(msg, args)
+	message.level = WARN
+	writeMessage(message)
+}
+
+func Error(msg ... interface{}) {
+	message := createMessage(msg...)
+	message.level = ERROR
+	writeMessage(message)
+}
+
+func Errorf(msg string, args ... interface{}) {
+	message := createMessagef(msg, args)
+	message.level = ERROR
+	writeMessage(message)
 }
