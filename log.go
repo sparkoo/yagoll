@@ -85,14 +85,14 @@ func Println(msg ... interface{}) {
 }
 
 func Printf(msg string, args ... interface{}) {
-	message := createMessagef(msg, args)
+	message := createMessagef(msg, args...)
 	message.level = INFO
 	message.newLine = false
 	writeMessage(message)
 }
 
 func Printfln(msg string, args ... interface{}) {
-	message := createMessagef(msg, args)
+	message := createMessagef(msg, args...)
 	message.level = INFO
 	writeMessage(message)
 }
@@ -104,7 +104,7 @@ func Trace(msg ... interface{}) {
 }
 
 func Tracef(msg string, args ... interface{}) {
-	message := createMessagef(msg, args)
+	message := createMessagef(msg, args...)
 	message.level = TRACE
 	writeMessage(message)
 }
@@ -116,7 +116,7 @@ func Debug(msg ... interface{}) {
 }
 
 func Debugf(msg string, args ... interface{}) {
-	message := createMessagef(msg, args)
+	message := createMessagef(msg, args...)
 	message.level = INFO
 	writeMessage(message)
 }
@@ -128,7 +128,7 @@ func Info(msg ... interface{}) {
 }
 
 func Infof(msg string, args ... interface{}) {
-	message := createMessagef(msg, args)
+	message := createMessagef(msg, args...)
 	message.level = INFO
 	writeMessage(message)
 }
@@ -140,7 +140,7 @@ func Warn(msg ... interface{}) {
 }
 
 func Warnf(msg string, args ... interface{}) {
-	message := createMessagef(msg, args)
+	message := createMessagef(msg, args...)
 	message.level = WARN
 	writeMessage(message)
 }
@@ -152,7 +152,7 @@ func Error(msg ... interface{}) {
 }
 
 func Errorf(msg string, args ... interface{}) {
-	message := createMessagef(msg, args)
+	message := createMessagef(msg, args...)
 	message.level = ERROR
 	writeMessage(message)
 }
