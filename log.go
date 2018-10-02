@@ -51,8 +51,10 @@ func writeMessage(message message) {
 		finalMessage += fmt.Sprintf(message.message, message.args...)
 	} else {
 		finalMessage += message.message
-		finalMessage += fmt.Sprint(message.args[0])
-		finalMessage += fmt.Sprint(message.args[1:])
+		if len(message.args) > 0 {
+			finalMessage += " "
+			finalMessage += fmt.Sprint(message.args...)
+		}
 	}
 	if message.newLine {
 		finalMessage += "\n"
@@ -67,12 +69,25 @@ func prefix(message message) string {
 	return fmt.Sprintf("[ %-45s ]> ", prefix)
 }
 
+func createMessage(msg ... interface{}) message {
+	return message{message: fmt.Sprint(msg[0]), args: msg[1:], newLine: true}
+}
+
+func createMessagef(msg string, args ... interface{}) message {
+	return message{message: msg, args: args, format: true, newLine: true}
+}
+
 func Println(msg ... interface{}) {
-	writeMessage(message{args: msg, newLine: true, level: TRACE})
+	message := createMessage(msg...)
+	message.level = TRACE
+	writeMessage(message)
 }
 
 func Printf(msg string, args ... interface{}) {
-	writeMessage(message{message: msg, args: args, format: true, level: TRACE})
+	message := createMessagef(msg, args)
+	message.level = TRACE
+	message.newLine = false
+	writeMessage(message)
 }
 
 func Printfln(msg string, args ... interface{}) {
