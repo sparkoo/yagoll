@@ -51,3 +51,8 @@ func Printf(msg string, args ... interface{}) {
 	_, file, line, _ := runtime.Caller(1)
 	writeMessage(message{message: msg, args: args, format: true, file: file, line: line})
 }
+
+func Printfln(msg string, args ... interface{}) {
+	_, file, line, _ := runtime.Caller(1)
+	writeMessage(message{message: msg, args: args, format: true, file: file, line: line, newLine: true})
+}
