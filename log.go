@@ -80,20 +80,20 @@ func createMessagef(msg string, args ... interface{}) message {
 
 func Println(msg ... interface{}) {
 	message := createMessage(msg...)
-	message.level = TRACE
+	message.level = INFO
 	writeMessage(message)
 }
 
 func Printf(msg string, args ... interface{}) {
 	message := createMessagef(msg, args)
-	message.level = TRACE
+	message.level = INFO
 	message.newLine = false
 	writeMessage(message)
 }
 
 func Printfln(msg string, args ... interface{}) {
 	message := createMessagef(msg, args)
-	message.level = TRACE
+	message.level = INFO
 	writeMessage(message)
 }
 
