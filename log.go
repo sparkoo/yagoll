@@ -64,10 +64,26 @@ func writeMessage(message message) {
 }
 
 func prefix(message message) string {
+	var level string
+	switch message.level {
+	case TRACE:
+		level = "T"
+	case DEBUG:
+		level = "D"
+	case INFO:
+		level = "I"
+	case WARN:
+		level = "W"
+	case ERROR:
+		level = "E"
+	}
 	filePath := strings.Split(message.file, "/")
 	fileName := filePath[len(filePath)-1]
-	prefix := fmt.Sprint(time.Now().Format("2006-01-02 15:04:05.000"), " ", fileName, ":", message.line)
-	return fmt.Sprintf("[ %-45s ]> ", prefix)
+	fileNameWithLine := fmt.Sprint(fileName, ":", message.line)
+	fileNameWithLine = fmt.Sprintf("%-20s", fileNameWithLine)
+	logTime := time.Now().Format("2006-01-02 15:04:05.000")
+	prefix := fmt.Sprint("[", level, "] ", logTime, " | ", fileNameWithLine, " || ")
+	return prefix
 }
 
 func createMessage(msg ... interface{}) message {
