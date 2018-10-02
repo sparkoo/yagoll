@@ -23,7 +23,7 @@ type message struct {
 func writeMessage(message message) {
 	finalMessage := prefix(message)
 	if message.format {
-		finalMessage += fmt.Sprintf(message.message, message.args)
+		finalMessage += fmt.Sprintf(message.message, message.args...)
 	} else {
 		finalMessage += message.message
 		finalMessage += fmt.Sprint(message.args[0])
