@@ -39,6 +39,9 @@ func SetLevel(level int) {
 	conf.level = level
 }
 func writeMessage(message message) {
+	if message.level < conf.level {
+		return
+	}
 	_, file, line, _ := runtime.Caller(2)
 	message.file = file
 	message.line = line
