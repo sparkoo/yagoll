@@ -18,7 +18,17 @@ type message struct {
 	format  bool
 	file    string
 	line    int
+	level   int
 }
+
+// levels
+const (
+	TRACE = iota
+	DEBUG
+	INFO
+	WARN
+	ERROR
+)
 
 func writeMessage(message message) {
 	_, file, line, _ := runtime.Caller(2)
