@@ -38,8 +38,8 @@ func writeMessage(message message) {
 func prefix(message message) string {
 	filePath := strings.Split(message.file, "/")
 	fileName := filePath[len(filePath)-1]
-	prefix := fmt.Sprint("[ ", time.Now().Format("2006-01-02 15:04:05.000"), " ", fileName, ":", message.line, " ] ")
-	return fmt.Sprintf("%-50s", prefix)
+	prefix := fmt.Sprint(time.Now().Format("2006-01-02 15:04:05.000"), " ", fileName, ":", message.line)
+	return fmt.Sprintf("[ %-45s ]> ", prefix)
 }
 
 func Println(msg ... interface{}) {
