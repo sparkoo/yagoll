@@ -10,6 +10,7 @@ import (
 
 var out = os.Stdout
 var err = os.Stderr
+var conf = config{level: TRACE}
 
 type message struct {
 	message string
@@ -30,6 +31,13 @@ const (
 	ERROR
 )
 
+type config struct {
+	level int
+}
+
+func SetLevel(level int) {
+	conf.level = level
+}
 func writeMessage(message message) {
 	_, file, line, _ := runtime.Caller(2)
 	message.file = file
