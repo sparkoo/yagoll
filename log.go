@@ -21,6 +21,10 @@ type message struct {
 }
 
 func writeMessage(message message) {
+	_, file, line, _ := runtime.Caller(2)
+	message.file = file
+	message.line = line
+
 	finalMessage := prefix(message)
 	if message.format {
 		finalMessage += fmt.Sprintf(message.message, message.args...)
@@ -43,16 +47,13 @@ func prefix(message message) string {
 }
 
 func Println(msg ... interface{}) {
-	_, file, line, _ := runtime.Caller(1)
-	writeMessage(message{args: msg, newLine: true, file: file, line: line})
+	writeMessage(message{args: msg, newLine: true, level: TRACE})
 }
 
 func Printf(msg string, args ... interface{}) {
-	_, file, line, _ := runtime.Caller(1)
-	writeMessage(message{message: msg, args: args, format: true, file: file, line: line})
+	writeMessage(message{message: msg, args: args, format: true, level: TRACE})
 }
 
 func Printfln(msg string, args ... interface{}) {
-	_, file, line, _ := runtime.Caller(1)
-	writeMessage(message{message: msg, args: args, format: true, file: file, line: line, newLine: true})
+	writeMessage(message{message: msg, args: args, format: true, newLine: true, level: TRACE})
 }
