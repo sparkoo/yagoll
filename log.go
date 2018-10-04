@@ -128,13 +128,13 @@ func Tracef(msg string, args ... interface{}) {
 
 func Debug(msg ... interface{}) {
 	message := createMessage(msg...)
-	message.level = INFO
+	message.level = DEBUG
 	writeMessage(message)
 }
 
 func Debugf(msg string, args ... interface{}) {
 	message := createMessagef(msg, args...)
-	message.level = INFO
+	message.level = DEBUG
 	writeMessage(message)
 }
 
