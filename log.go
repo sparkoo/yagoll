@@ -53,8 +53,9 @@ func writeMessage(message message) {
 	} else {
 		finalMessage += message.message
 		if len(message.args) > 0 {
-			finalMessage += " "
-			finalMessage += fmt.Sprint(message.args...)
+			for _, toPrint := range message.args {
+				finalMessage += fmt.Sprint(" ", toPrint)
+			}
 		}
 	}
 	if message.newLine {
