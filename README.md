@@ -4,10 +4,13 @@ There are many logging libraries for Go and this is one of them. Project was cre
 I found no logging lib that I was comfortable to work with and has all features I want, so I've created my own.
 
 ### Goals
- * easy to migrate from standard Go `log` by changing `import "log"` to `import log "github.com/sparkoo/yagoll"`
- * coming from Java world, I'm used to 5 levels -> TRACE, DEBUG, INFO, WARN, ERROR
- * ability to filter messages by levels
- * print file and line of log message
+ - [x] easy to migrate from standard Go `log` by changing `import "log"` to `import log "github.com/sparkoo/yagoll"`
+ - [x] coming from Java world, I'm used to 5 levels -> TRACE, DEBUG, INFO, WARN, ERROR
+ - [x] ability to filter messages by levels
+ - [x] print file and line of log message
+ - [ ] customize message formatting
+ - [ ] log to file
+ - [ ] rolling log files
 
 ### Getting started
 `go get github.com/sparkoo/yagoll`
