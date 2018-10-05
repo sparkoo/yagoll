@@ -173,3 +173,17 @@ func Errorf(msg string, args ... interface{}) {
 	message.level = ERROR
 	writeMessage(message)
 }
+
+func Fatal(msg ... interface{}) {
+	message := createMessage(msg...)
+	message.level = ERROR
+	writeMessage(message)
+	os.Exit(1)
+}
+
+func Fatalf(msg string, args ... interface{}) {
+	message := createMessagef(msg, args...)
+	message.level = ERROR
+	writeMessage(message)
+	os.Exit(1)
+}
