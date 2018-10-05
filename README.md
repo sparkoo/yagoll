@@ -8,6 +8,7 @@ I found no logging lib that I was comfortable to work with and has all features 
  - [x] coming from Java world, I'm used to 5 levels -> TRACE, DEBUG, INFO, WARN, ERROR
  - [x] ability to filter messages by levels
  - [x] print file and line of log message
+ - [ ] configurable by config file without need to recompile
  - [ ] customize message formatting
  - [ ] log to file
  - [ ] rolling log files
