@@ -12,6 +12,7 @@ I found no logging lib that I was comfortable to work with and has all features 
  - [ ] customize message formatting
  - [ ] log to file
  - [ ] rolling log files
+ - [ ] filter messages by file/package/pattern
 
 ### Getting started
 `go get github.com/sparkoo/yagoll`
