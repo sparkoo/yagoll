@@ -10,7 +10,7 @@ import (
 
 var out = os.Stdout
 var err = os.Stderr
-var conf = config{level: TRACE}
+var conf = Config{Level: TRACE, ExcludeFiles: []string{}}
 
 type message struct {
 	message string
@@ -31,21 +31,32 @@ const (
 	ERROR
 )
 
-type config struct {
-	level int
+type Config struct {
+	Level        int
+	ExcludeFiles []string
 }
 
 func SetLevel(level int) {
-	conf.level = level
+	conf.Level = level
+}
+
+func SetConfig(config Config) {
+	conf = config
 }
 
 func writeMessage(message message) {
-	if message.level < conf.level {
+	if message.level < conf.Level {
 		return
 	}
 	_, file, line, _ := runtime.Caller(2)
 	message.file = file
 	message.line = line
+
+	for _, excludeFile := range conf.ExcludeFiles {
+		if strings.Contains(message.file, excludeFile) {
+			return
+		}
+	}
 
 	finalMessage := prefix(message)
 	if message.format {
