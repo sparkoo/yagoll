@@ -75,11 +75,7 @@ func writeMessage(message message) {
 
 	formattedMessage := []byte(fmt.Sprintf("%-50s", finalMessage))
 
-	if message.level <= INFO {
-		_, _ = out.Write(formattedMessage)
-	} else {
-		_, _ = err.Write(formattedMessage)
-	}
+	_, _ = err.Write(formattedMessage)
 }
 
 func prefix(message message) string {
