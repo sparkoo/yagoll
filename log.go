@@ -95,7 +95,7 @@ func prefix(message message) string {
 	filePath := strings.Split(message.file, "/")
 	fileName := filePath[len(filePath)-1]
 	fileNameWithLine := fmt.Sprint(fileName, ":", message.line)
-	fileNameWithLine = fmt.Sprintf("%-20s", fileNameWithLine)
+	fileNameWithLine = fmt.Sprintf("%-30s", fileNameWithLine)
 	logTime := time.Now().Format("2006-01-02 15:04:05.000")
 	prefix := fmt.Sprint("[", level, "] ", logTime, " | ", fileNameWithLine, " || ")
 	return prefix
